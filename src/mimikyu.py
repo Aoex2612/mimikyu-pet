@@ -115,6 +115,25 @@ def get_hypr_cursor():
             pass
     return None, None
 
+def get_cursor_pos():
+    """Gets current cursor position via Hyprland IPC, falling back to GDK for other desktops."""
+    cx, cy = get_hypr_cursor()
+    if cx is not None and cy is not None:
+        return cx, cy
+
+    try:
+        display = Gdk.Display.get_default()
+        if display:
+            seat = display.get_default_seat()
+            if seat:
+                pointer = seat.get_pointer()
+                if pointer:
+                    _, px, py = pointer.get_position()
+                    return float(px), float(py)
+    except Exception:
+        pass
+    return None, None
+
 def choose_monitor(target_name=None):
     """Selects the target monitor (by explicit name, Hyprland focus, or cursor position)."""
     display = Gdk.Display.get_default()
@@ -209,7 +228,7 @@ class MimikyuPet(Gtk.Window):
 
         self.tick_counter = 0
         self.last_activity_time = time.time()
-        self.last_cursor_pos = get_hypr_cursor()
+        self.last_cursor_pos = get_cursor_pos()
 
         self.update_sprite()
         self.move(int(self.x), int(self.y))
@@ -286,7 +305,7 @@ class MimikyuPet(Gtk.Window):
 
     def check_user_idle(self):
         """Wakes Mimikyu on cursor movement; puts Mimikyu to sleep after timeout."""
-        current_cursor = get_hypr_cursor()
+        current_cursor = get_cursor_pos()
         now = time.time()
 
         if current_cursor != (None, None):

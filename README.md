@@ -1,4 +1,4 @@
-# 👻 Mimikyu Desktop Pet
+# Mimikyu Desktop Pet
 
 An autonomous, interactive Pokémon desktop companion for Linux (Hyprland, Wayland & X11), written in Python with GTK 3.
 
@@ -6,19 +6,21 @@ Inspired by Pokémon Mystery Dungeon sprites, Mimikyu roams your screens, dashes
 
 ---
 
-## ✨ Features
+## Why Mimikyu?
 
-- **🐾 Autonomous Movement:** Walks and dashes naturally in 8 directions at a smooth 40 FPS.
-- **⚡ Interactive Reactions:** Click on Mimikyu to make it flinch and shake in pain with directional tremors.
-- **🖱️ Native Window Dragging:** Move Mimikyu anywhere using your window manager's native drag shortcut (`Super + Left Click`) without fighting the autonomous movement.
-- **🖥️ Multi-Monitor Aware:** Automatically spawns on your currently focused monitor (via Hyprland IPC) or under your cursor, and roams across screen boundaries smoothly.
-- **💤 Idle Sleep Mode:** Automatically curls up and goes to sleep after 5 minutes of cursor inactivity, and wakes up immediately when you move the mouse.
-- **📐 Compact & Snug Canvas:** Sprites are cleanly cropped to a 32×32 pixel grid (80×80 px at 2.5× desktop scale), tightly wrapping the character without dead transparent space.
-- **🚀 One-command Toggle:** Single command `mimikyu` toggles the pet on/off.
+Because I love him, duh.
+
+## Features
+
+- **Autonomous Movement:** Walks and dashes naturally in 8 directions at a smooth 40 FPS.
+- **Interactive Reactions:** Click on Mimikyu to make it flinch and shake in pain with directional tremors.
+- **Idle Sleep Mode:** Automatically curls up and goes to sleep after 5 minutes of cursor inactivity, and wakes up immediately when you move the mouse.
+- **Compact & Snug Canvas:** Sprites are cleanly cropped to a 32×32 pixel grid (80×80 px at 2.5× desktop scale), tightly wrapping the character without dead transparent space.
+- **One-command Toggle:** Single command `mimikyu` toggles the pet on/off.
 
 ---
 
-## 📦 Requirements
+## Requirements
 
 - **Python 3.8+**
 - **GTK 3** & **PyGObject**
@@ -40,7 +42,7 @@ Inspired by Pokémon Mystery Dungeon sprites, Mimikyu roams your screens, dashes
 
 ---
 
-## 🛠️ Installation
+## Installation
 
 1. **Clone the repository:**
    ```bash
@@ -57,52 +59,31 @@ Inspired by Pokémon Mystery Dungeon sprites, Mimikyu roams your screens, dashes
    This will:
    - Copy sprites and source to `~/.local/share/mimikyu/`
    - Symlink the launcher executable to `~/.local/bin/mimikyu`
+   - Install `mimikyu.desktop` and application icons so it appears in your system app launcher (GNOME, KDE Plasma, XFCE, Rofi, Wofi, etc.)
 
 3. Ensure `~/.local/bin` is in your `$PATH`.
 
 ---
 
-## 🪟 Hyprland Configuration
+## 🚀 Launching Mimikyu
 
-To ensure Mimikyu floats borderless, ignores window wobbles/animations, and allows mouse interaction, add the following window rules to your Hyprland configuration.
-
-### Standard `hyprland.conf`:
-```ini
-windowrule = float, title:^(desktop-pet)$
-windowrule = pin, title:^(desktop-pet)$
-windowrule = noblur, title:^(desktop-pet)$
-windowrule = noborder, title:^(desktop-pet)$
-windowrule = noshadow, title:^(desktop-pet)$
-windowrule = noanim, title:^(desktop-pet)$
-windowrule = noinitialfocus, title:^(desktop-pet)$
-```
-
-### Hyprland 0.57+ Lua (`hyprland.lua` / `hypr-user.lua`):
-```lua
-hl.window_rule({
-    name             = "desktop-pet",
-    match            = { title = "desktop-pet" },
-    float            = true,
-    no_blur          = true,
-    pin              = true,
-    border_size      = 0,
-    no_shadow        = true,
-    no_glow          = true,
-    no_anim          = true,
-    no_wobble        = true,
-    no_initial_focus = true,
-})
-```
-
-### Recommended Keybinding:
-Add this to toggle Mimikyu with a shortcut (e.g., `Super + P`):
-```ini
-bind = $mainMod, P, exec, mimikyu
-```
+- **From the Application Menu:** Search for **Mimikyu** in your desktop environment's launcher (GNOME Activities, KDE Kickoff, Rofi, etc.) and click to toggle on/off.
+- **From the Terminal:**
+  ```bash
+  mimikyu
+  ```
+- **From a specific monitor:**
+  ```bash
+  mimikyu HDMI-A-1
+  ```
 
 ---
 
-## 🎮 Controls
+## Hyprland Configuration
+
+Since this program was originally made in the Hyperland desktop enviroment, some rules ensuring that shows correctly have been included. See `desktop-pet.conf`.
+
+## Controls
 
 | Action | Control | Description |
 |---|---|---|
@@ -118,6 +99,9 @@ bind = $mainMod, P, exec, mimikyu
 
 ```text
 mimikyu-pet/
+├── assets/              # App icon (.png) and .desktop menu entry
+│   ├── mimikyu.desktop
+│   └── mimikyu.png
 ├── sprites/             # 130 32x32 PNG sprite frames
 ├── src/
 │   └── mimikyu.py       # Main GTK3 desktop pet implementation

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Mimikyu
+GenericName=Desktop Pet
+Comment=An autonomous roaming Pokémon desktop companion
+Exec=mimikyu
+Icon=mimikyu
+Terminal=false
+Type=Application
+Categories=Utility;Amusement;Game;
+Keywords=pokemon;mimikyu;pet;desktop;companion;
+StartupNotify=false
