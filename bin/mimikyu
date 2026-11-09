@@ -1,0 +1,40 @@
+#!/bin/sh
+# Portable toggle script for Mimikyu Desktop Pet
+# Works across bash, zsh, fish, and window manager keybindings.
+
+# Resolve real path to this script (following symlinks if any)
+PRG="$0"
+while [ -h "$PRG" ]; do
+    ls=$(ls -ld "$PRG")
+    link=$(expr "$ls" : '.*-> \(.*\)$')
+    if expr "$link" : '/.*' > /dev/null; then
+        PRG="$link"
+    else
+        PRG=$(dirname "$PRG")"/$link"
+    fi
+done
+BIN_DIR=$(cd "$(dirname "$PRG")" && pwd)
+REPO_DIR=$(cd "$BIN_DIR/.." && pwd)
+
+# Search for the Python entrypoint
+if [ -f "$REPO_DIR/src/mimikyu.py" ]; then
+    PYTHON_SCRIPT="$REPO_DIR/src/mimikyu.py"
+elif [ -f "$HOME/.local/share/mimikyu/src/mimikyu.py" ]; then
+    PYTHON_SCRIPT="$HOME/.local/share/mimikyu/src/mimikyu.py"
+elif [ -f "$HOME/.local/share/mimikyu/mimikyu.py" ]; then
+    PYTHON_SCRIPT="$HOME/.local/share/mimikyu/mimikyu.py"
+elif [ -f "$HOME/.config/bongocat/wander_pet.py" ]; then
+    PYTHON_SCRIPT="$HOME/.config/bongocat/wander_pet.py"
+else
+    echo "Error: Could not locate mimikyu.py" >&2
+    exit 1
+fi
+
+# Toggle logic: if running, kill it; if stopped, launch it
+if pgrep -f "(mimikyu\.py|wander_pet\.py)" > /dev/null 2>&1; then
+    pkill -f "(mimikyu\.py|wander_pet\.py)"
+    echo "Mimikyu stopped."
+else
+    nohup python3 "$PYTHON_SCRIPT" "$@" >/dev/null 2>&1 &
+    echo "Mimikyu launched!"
+fi
