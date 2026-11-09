@@ -64,43 +64,13 @@ sudo dnf install python3-gobject gtk3
 3. Ensure `~/.local/bin` is in your `$PATH`.
 
 ### Hyprland Configuration
-Since this program was originally made in the Hyprland desktop environment, window rules ensuring it displays borderless and without jitter are included. See `hyprland/desktop-pet.conf`:
-
-```ini
-windowrule = float, title:^(desktop-pet)$
-windowrule = pin, title:^(desktop-pet)$
-windowrule = noblur, title:^(desktop-pet)$
-windowrule = noborder, title:^(desktop-pet)$
-windowrule = noshadow, title:^(desktop-pet)$
-windowrule = noanim, title:^(desktop-pet)$
-windowrule = noinitialfocus, title:^(desktop-pet)$
-```
-
-Recommended keybinding:
-```ini
-bind = $mainMod, P, exec, mimikyu
-```
+Since this program was originally made in the Hyprland desktop environment, window rules ensuring it displays borderless and without jitter are included. See `hyprland/desktop-pet.conf`
 
 ---
 
 ## Windows Setup
 
-### Option 1: Run with Python
-1. Install [Python 3](https://www.python.org/downloads/) (check the box *"Add python.exe to PATH"* during installation).
-2. Install Pillow:
-   ```cmd
-   pip install pillow
-   ```
-3. Run or double-click `bin\mimikyu.bat` (or run `pythonw src\mimikyu.py`).
-
-### Option 2: Build a Standalone Executable (.exe)
-You can compile a single, portable `Mimikyu.exe` that runs on any Windows PC without Python installed:
-1. Double-click `build_exe.bat` (or run it in Command Prompt).
-2. Once complete, your standalone executable will be ready at:
-   ```text
-   dist\Mimikyu.exe
-   ```
-   You can place `Mimikyu.exe` anywhere (Desktop, Startup folder, USB) and double-click to run!
+Download the `Mimikyu.exe` file from the release. You can also build your own executable if you want running the `build-exe.bat` file.
 
 ---
 
