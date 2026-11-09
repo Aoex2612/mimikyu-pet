@@ -2,9 +2,7 @@
 
 [![Build Windows Executable](https://github.com/Aoex2612/mimikyu-pet/actions/workflows/build-windows.yml/badge.svg)](https://github.com/Aoex2612/mimikyu-pet/actions/workflows/build-windows.yml)
 [![Python Version](https://img.shields.io/badge/python-3.8+-3776AB.svg?logo=python&logoColor=white)](https://www.python.org/)
-[![Latest Release](https://img.shields.io/github/v/release/Aoex2612/mimikyu-pet?color=blue&logo=github)](https://github.com/Aoex2612/mimikyu-pet/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows-lightgrey.svg)](https://github.com/Aoex2612/mimikyu-pet)
 
 An autonomous, interactive Pokémon desktop companion for Linux and Windows, written in Python.
 
