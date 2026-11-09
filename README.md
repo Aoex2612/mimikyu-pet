@@ -8,7 +8,7 @@ Inspired by Pokémon Mystery Dungeon sprites, Mimikyu roams your screens, dashes
 
 ## Why Mimikyu?
 
-Because I love him, duh.
+Because I love him, duh. Open to porting other Pokémon though, if requested.
 
 ## Features
 
@@ -65,7 +65,7 @@ Because I love him, duh.
 
 ---
 
-## 🚀 Launching Mimikyu
+## Launching Mimikyu
 
 - **From the Application Menu:** Search for **Mimikyu** in your desktop environment's launcher (GNOME Activities, KDE Kickoff, Rofi, etc.) and click to toggle on/off.
 - **From the Terminal:**
@@ -95,35 +95,13 @@ Since this program was originally made in the Hyperland desktop enviroment, some
 
 ---
 
-## 📁 Project Structure
-
-```text
-mimikyu-pet/
-├── assets/              # App icon (.png) and .desktop menu entry
-│   ├── mimikyu.desktop
-│   └── mimikyu.png
-├── sprites/             # 130 32x32 PNG sprite frames
-├── src/
-│   └── mimikyu.py       # Main GTK3 desktop pet implementation
-├── bin/
-│   └── mimikyu          # Portable POSIX sh toggle script
-├── hyprland/
-│   └── desktop-pet.conf # Ready-to-source Hyprland rules
-├── install.sh           # One-command installer / uninstaller
-├── requirements.txt     # Python dependencies
-├── LICENSE              # MIT License
-└── README.md
-```
-
----
-
-## 📜 Credits
+## Credits
 
 - Sprite artwork sourced from the **Pokémon Mystery Dungeon** series and the [PMD SpriteCollab](https://sprites.pmdcollab.org/) community project.
 - Pokémon and Mimikyu are trademarks of Nintendo, Game Freak, and The Pokémon Company.
 
 ---
 
-## 📄 License
+## License
 
 This project is open-source under the [MIT License](LICENSE).
