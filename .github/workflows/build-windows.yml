@@ -1,0 +1,50 @@
+name: Build Windows Executable
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller pillow
+
+      - name: Build standalone Mimikyu.exe
+        run: |
+          pyinstaller --noconsole --onefile --name "Mimikyu" --icon "assets/mimikyu.ico" --add-data "sprites;sprites" src/mimikyu_windows.py
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mimikyu-Windows-Executable
+          path: dist/Mimikyu.exe
+
+      - name: Attach Mimikyu.exe to Release
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TARGET_TAG="v1.0"
+          if [ "${{ github.event_name }}" = "release" ]; then
+            TARGET_TAG="${{ github.event.release.tag_name }}"
+          fi
+          echo "Uploading dist/Mimikyu.exe to release $TARGET_TAG..."
+          gh release upload "$TARGET_TAG" "dist/Mimikyu.exe" --clobber
