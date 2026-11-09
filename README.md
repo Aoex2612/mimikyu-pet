@@ -1,6 +1,6 @@
 # Mimikyu Desktop Pet
 
-An autonomous, interactive Pokémon desktop companion for Linux (Hyprland, Wayland & X11), written in Python with GTK 3.
+An autonomous, interactive Pokémon desktop companion for Linux, written in Python with GTK 3.
 
 Inspired by Pokémon Mystery Dungeon sprites, Mimikyu roams your screens, dashes around, reacts to clicks, and sleeps when you are away.
 
