@@ -6,6 +6,16 @@ An interactive, autonomous roaming desktop companion.
 
 import os
 import sys
+
+# Auto-dispatch to Windows Tkinter implementation on Windows or when explicitly requested
+if sys.platform == "win32" or "--windows" in sys.argv or "--tk" in sys.argv:
+    try:
+        from mimikyu_windows import main as win_main
+    except ImportError:
+        from src.mimikyu_windows import main as win_main
+    win_main()
+    sys.exit(0)
+
 import time
 import random
 import socket
