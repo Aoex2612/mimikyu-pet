@@ -171,11 +171,7 @@ class WindowsMimikyuPet:
 
         # Right-click context menu
         self.menu = tk.Menu(self.root, tearoff=0)
-        self.menu.add_command(label="Pet Mimikyu ❤️", command=self.trigger_hurt)
-        self.menu.add_command(label="Take a Nap 💤", command=self.trigger_sleep)
-        self.menu.add_command(label="Wake Up ⚡", command=self.trigger_wake)
-        self.menu.add_separator()
-        self.menu.add_command(label="Close Mimikyu", command=self.root.destroy)
+        self.menu.add_command(label="Exit", command=self.root.destroy)
 
         self.update_sprite()
         self.root.geometry(f"{self.cur_w}x{self.cur_h}+{int(self.x)}+{int(self.y)}")

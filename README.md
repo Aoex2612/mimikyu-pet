@@ -23,7 +23,7 @@ Because I love him, duh. Open to porting other Pokémon though, if requested.
 - **Drag & Relocate:**
   - **Linux:** Move Mimikyu anywhere using your window manager's native shortcut (`Super + Left Click`).
   - **Windows:** Click and drag directly with your mouse (`Left Click + Drag`).
-- **Right-Click Menu (Windows):** Right-click Mimikyu anytime to pet him, tell him to nap, wake him up, or exit.
+- **Right-Click Menu (Windows):** Right-click Mimikyu anytime to exit.
 - **Multi-Monitor Aware:** Roams seamlessly across virtual screens and multiple displays.
 - **Idle Sleep Mode:** Automatically curls up and goes to sleep after 5 minutes of cursor inactivity, and wakes up immediately when you move the mouse.
 - **Compact & Snug Canvas:** Sprites are cleanly cropped to a 32×32 pixel grid (80×80 px at 2.5× desktop scale), tightly wrapping the character without dead transparent space.
@@ -82,10 +82,10 @@ Download the `Mimikyu.exe` file from the release. You can also build your own ex
 
 | Action | Linux Control | Windows Control | Description |
 |---|---|---|---|
-| **Toggle On/Off** | `mimikyu` in terminal or keybind | Run `mimikyu.bat` or Right-click → *Close* | Starts or gracefully closes Mimikyu |
+| **Toggle On/Off** | `mimikyu` in terminal or keybind | Run `mimikyu.bat` or Right-click → *Exit* | Starts or gracefully closes Mimikyu |
 | **Damage / Shake** | `Left Click` on Mimikyu | `Left Click` on Mimikyu | Triggers damage reaction and trembling |
 | **Move / Drag** | `Super + Left Click` (drag) | `Left Click + Drag` | Drag Mimikyu to any spot on your screen |
-| **Context Menu** | — | `Right Click` on Mimikyu | Quick actions: Pet, Nap, Wake up, Close |
+| **Context Menu** | — | `Right Click` on Mimikyu | Quick exit option |
 | **Wake Up** | Move mouse cursor | Move mouse cursor | Wakes Mimikyu from sleep mode |
 | **Specific Monitor** | `mimikyu HDMI-A-1` / `mimikyu laptop` | Automatic (spans all monitors) | Direct monitor selection |
 
